@@ -1,28 +1,32 @@
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import GithubImage from "../assets/github.png"
-import { screenHeight, screenWidth } from '../utils/AppDimensions'
+import PersonImage from "../../assets/person.png"
+import RightIcon from '../../assets/right.png'
+import { screenHeight, screenWidth } from '../../utils/AppDimensions'
 
-const SignUp = () => {
+const Questions = () => {
 
-    const Sign = () => {
-        console.log("sign");
+    const SignUp = () => {
+        console.log("sing");
     };
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
-                <Image source={GithubImage} style={{ width: screenWidth * 0.21, height: screenWidth * 0.2 }} />
+                <View style={{ backgroundColor: '#FF015C', borderRadius: 50 }}>
+                    <Image source={PersonImage} style={{ width: screenWidth * 0.21, height: screenWidth * 0.21, tintColor: '#fff' }} />
+                </View>
                 <View style={styles.textView}>
-                    <Text style={styles.textHead}>Sign up with GitHub</Text>
-                    <Text style={styles.textDescription}>Turpis egestas maecenas pharetra convallis posuere morbi leo urna molestie.</Text>
+                    <Text style={styles.textHead}>Welcome Oktay!</Text>
+                    <Text style={styles.textDescription}>Turpis egestas maecenas pharetra convallis posuere...</Text>
                 </View>
             </View>
             <View style={styles.buttonView}>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={Sign}>
-                    <Text style={styles.buttonText}>Sign up</Text>
+                    onPress={SignUp}>
+                    <Text style={styles.buttonText}>Questions</Text>
+                    <Image source={RightIcon} style={{ right: 0, position: 'absolute', marginRight: 30 }} />
                 </TouchableOpacity>
             </View>
 
@@ -45,7 +49,7 @@ const styles = StyleSheet.create({
         marginTop: screenHeight / 25
     },
     textHead: {
-        fontSize: 26,
+        fontSize: 32,
         fontWeight: "700",
         color: '#1D1D1D',
         textAlign: 'center'
@@ -62,14 +66,16 @@ const styles = StyleSheet.create({
         paddingBottom: screenHeight / 20,
         width: screenWidth,
         bottom: 0,
-        position: 'absolute'
+        position: 'absolute',
     },
     button: {
         borderRadius: 50,
         borderWidth: 3,
         borderColor: "#24292F",
         height: screenHeight / 15,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
     },
     buttonText: {
         color: '#1D1D1D',
@@ -78,4 +84,4 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 })
-export default SignUp
+export default Questions
