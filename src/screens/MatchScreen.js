@@ -28,14 +28,20 @@ const MatchScreen = () => {
                         stackSize={3}
                         stackSeparation={-25}
                         cardIndex={0}
-                        onSwipedRight={() => setLiked(true)}
-                        onSwipedLeft={() => setLiked(false)}
+                        onSwipedRight={() => {
+                            setLiked(true);
+                            console.log("liked")
+                        }}
+                        onSwipedLeft={() => {
+                            setLiked(false)
+                            console.log("dislike");
+                        }}
                         animateCardOpacity
                         verticalSwipe={false}
                         renderCard={card => (
                             <ImageBackground source={card.src} style={{ height: screenWidth * 0.975, width: screenWidth * 0.75 }}>
                                 <View style={{ position: 'absolute', bottom: 0, margin: 20 }}>
-                                    <Text style={{ color: '#fff', fontSize: 24, fontWeight: "700" }}>{card.name}</Text>
+                                    <Text style={{ color: '#fff', fontSize: 24, fontWeight: "700" }}>{card.name},{card.age}</Text>
                                     <Text style={{ color: '#fff', fontSize: 16, fontWeight: "400" }}>{card.job}</Text>
                                 </View>
                             </ImageBackground>
@@ -54,7 +60,7 @@ const MatchScreen = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-        </SafeAreaView>
+        </SafeAreaView >
     )
 }
 
@@ -69,9 +75,8 @@ const styles = StyleSheet.create({
     discover: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 0,
         height: screenWidth * 0.975,
-        width: screenWidth * 0.75
+        width: screenWidth * 0.75,
     },
     circle: {
         backgroundColor: '#fff',

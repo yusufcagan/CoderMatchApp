@@ -48,6 +48,7 @@ function MyTab() {
                                         <View style={{ width: screenWidth / 6, backgroundColor: '#e94057', height: 2, position: 'absolute', top: 0 }} />
                                     )
                                 }
+                                <View style={{ height: 12, width: 12, backgroundColor: "red", borderRadius: 15, borderWidth: 2, borderColor: '#fff', position: 'absolute', zIndex: 2, top: 8, right: screenWidth / 12 }} />
                                 <Image
                                     source={HeartIcon}
                                     style={{ width: screenWidth / 14, height: screenWidth / 16, tintColor: focused && '#e94057' }}
