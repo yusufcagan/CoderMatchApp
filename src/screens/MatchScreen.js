@@ -1,24 +1,46 @@
 import { View, Text, SafeAreaView, StyleSheet, Image, TouchableOpacity, ImageBackground } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { screenHeight, screenWidth } from '../utils/AppDimensions'
 import HeadComponent from '../components/HeadComponent'
-import SwiperImage from '../assets/girl.png'
+import GirlOne from '../assets/girl.png'
+import GirlTwo from '../assets/girl1.png'
+import GirlThree from '../assets/girl2.png'
 import CloseIcon from '../assets/close.png'
 import LikeIcon from '../assets/like.png'
 import StarIcon from '../assets/star.png'
+import Swiper from 'react-native-deck-swiper'
 
 const MatchScreen = () => {
+    const [liked, setLiked] = useState(null)
+    const CardData = [
+        { name: "Gönül Yazar", age: 27, job: "Software Developer", src: GirlOne },
+        { name: "aa Yazar", age: 27, job: "Software Developer", src: GirlTwo },
+        { name: "bb Yazar", age: 27, job: "Software Developer", src: GirlThree }
+    ]
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <HeadComponent />
                 <View style={styles.discover}>
-                    <ImageBackground source={SwiperImage} style={{ height: screenWidth * 0.975, width: screenWidth * 0.75 }}>
-                        <View style={{ position: 'absolute', bottom: 0, margin: 20 }}>
-                            <Text style={{ color: '#fff', fontSize: 24, fontWeight: "700" }}>Gönül Yazar, 63</Text>
-                            <Text style={{ color: '#fff', fontSize: 16, fontWeight: "400" }}>Software Developer</Text>
-                        </View>
-                    </ImageBackground>
+                    <Swiper
+                        containerStyle={{ backgroundColor: 'transparent' }}
+                        cards={CardData}
+                        stackSize={3}
+                        stackSeparation={-25}
+                        cardIndex={0}
+                        onSwipedRight={() => setLiked(true)}
+                        onSwipedLeft={() => setLiked(false)}
+                        animateCardOpacity
+                        verticalSwipe={false}
+                        renderCard={card => (
+                            <ImageBackground source={card.src} style={{ height: screenWidth * 0.975, width: screenWidth * 0.75 }}>
+                                <View style={{ position: 'absolute', bottom: 0, margin: 20 }}>
+                                    <Text style={{ color: '#fff', fontSize: 24, fontWeight: "700" }}>{card.name}</Text>
+                                    <Text style={{ color: '#fff', fontSize: 16, fontWeight: "400" }}>{card.job}</Text>
+                                </View>
+                            </ImageBackground>
+                        )}
+                    />
                 </View>
                 <View style={styles.footButton}>
                     <TouchableOpacity style={styles.circle}>
@@ -47,7 +69,9 @@ const styles = StyleSheet.create({
     discover: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 60
+        marginTop: 0,
+        height: screenWidth * 0.975,
+        width: screenWidth * 0.75
     },
     circle: {
         backgroundColor: '#fff',
@@ -66,7 +90,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     footButton: {
-        marginTop: screenHeight / 25,
+        marginTop: screenHeight / 10,
         alignItems: 'center',
         justifyContent: 'space-around',
         flexDirection: 'row'

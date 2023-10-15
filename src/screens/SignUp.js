@@ -3,10 +3,11 @@ import React from 'react'
 import GithubImage from "../assets/github.png"
 import { screenHeight, screenWidth } from '../utils/AppDimensions'
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
 
     const Sign = () => {
         console.log("sign");
+        navigation.navigate("Questions")
     };
 
     return (

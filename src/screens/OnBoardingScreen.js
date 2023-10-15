@@ -4,7 +4,7 @@ import { screenWidth, screenHeight } from '../utils/AppDimensions'
 import BackImage from '../assets/php.png'
 import Swiper from 'react-native-swiper'
 
-const OnBoardingScreen = () => {
+const OnBoardingScreen = ({ navigation }) => {
 
     const swiperData = [
         {
@@ -33,7 +33,7 @@ const OnBoardingScreen = () => {
             >
                 {swiperData.map((item) => (
                     <View style={styles.content} key={item.id}>
-                        <Image source={BackImage} />
+                        <Image source={BackImage} style={{ height: screenWidth * 0.75, width: screenWidth * 0.98 }} />
                         <View style={styles.textView}>
                             <Text style={styles.textOne}>Lorem ipsum dolor sit amet,</Text>
                         </View>
@@ -44,10 +44,14 @@ const OnBoardingScreen = () => {
                 ))}
             </Swiper>
             <View style={styles.footButtonContainer}>
-                <TouchableOpacity style={styles.goButton}>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('SignUp')}
+                    style={styles.goButton}>
                     <Text style={styles.goText}>Let's Go!</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.skipButton}>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('SignUp')}
+                    style={styles.skipButton}>
                     <Text style={styles.skipText}>Skip</Text>
                 </TouchableOpacity>
             </View>

@@ -3,21 +3,35 @@ import React, { useState } from 'react'
 import { screenHeight } from '../../utils/AppDimensions'
 import CheckIcon from "../../assets/check.png"
 
-const QuestionsGender = () => {
+const QuestionsGender = ({ navigation }) => {
     const [selectGender, setSelectGender] = useState(null);
+
+    const OnManSelect = () => {
+        setSelectGender(false);
+        setTimeout(() => {
+            navigation.navigate('QuestionsOr')
+        }, 500)
+    }
+
+    const OnWomenSelect = () => {
+        setSelectGender(true);
+        setTimeout(() => {
+            navigation.navigate('QuestionsOr')
+        }, 500)
+    }
 
     return (
         <SafeAreaView style={styles.continer}>
             <View style={styles.content}>
                 <Text style={styles.textHead}>I am a</Text>
                 <TouchableOpacity
-                    onPress={() => setSelectGender(true)}
+                    onPress={OnWomenSelect}
                     style={selectGender ? styles.activeButton : styles.button}>
                     <Text style={[styles.buttonText, { color: selectGender ? '#fff' : '#1D1D1D' }]}>Women</Text>
                     {selectGender ? <Image source={CheckIcon} /> : null}
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => setSelectGender(false)}
+                    onPress={OnManSelect}
                     style={selectGender ? styles.button : styles.activeButton}>
                     <Text style={[styles.buttonText, { color: selectGender ? '#1D1D1D' : '#fff' }]}>Man</Text>
                     {selectGender ? null : <Image source={CheckIcon} />}

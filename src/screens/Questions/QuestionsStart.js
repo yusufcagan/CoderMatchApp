@@ -4,10 +4,11 @@ import PersonImage from "../../assets/person.png"
 import RightIcon from '../../assets/right.png'
 import { screenHeight, screenWidth } from '../../utils/AppDimensions'
 
-const Questions = () => {
+const Questions = ({ navigation }) => {
 
     const SignUp = () => {
-        console.log("sing");
+        console.log("go");
+        navigation.navigate('QuestionsGender')
     };
 
     return (

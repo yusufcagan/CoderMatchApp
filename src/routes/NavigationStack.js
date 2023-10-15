@@ -7,7 +7,6 @@ import QuestionsGender from '../screens/Questions/QuestionsGender';
 import QuestionsOr from '../screens/Questions/QuestionsOr';
 import QuestionsSelect from '../screens/Questions/QuestionsSelect';
 import MatchFoundScreen from '../screens/MatchFoundScreen';
-import MatchScreen from '../screens/MatchScreen';
 import MyTab from './NavigationBottom';
 
 
@@ -16,7 +15,7 @@ const Stack = createNativeStackNavigator();
 function MyStack() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="SplashScreen" component={MyTab} />
+            <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} />
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="Questions" component={Questions} />

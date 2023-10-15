@@ -4,7 +4,7 @@ import FoundImage from '../assets/found.png'
 import RightIcon from '../assets/right.png'
 import { screenHeight, screenWidth } from '../utils/AppDimensions'
 
-const MatchFoundScreen = () => {
+const MatchFoundScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
@@ -14,6 +14,7 @@ const MatchFoundScreen = () => {
             </View>
             <View style={styles.buttonView}>
                 <TouchableOpacity
+                    onPress={() => navigation.navigate('MyTab')}
                     style={styles.button}>
                     <Text style={styles.buttonText}>Show me</Text>
                     <Image source={RightIcon} style={{ right: 0, position: 'absolute', marginRight: 30 }} />

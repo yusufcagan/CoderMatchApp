@@ -3,21 +3,35 @@ import React, { useState } from 'react'
 import { screenHeight } from '../../utils/AppDimensions'
 import CheckIcon from "../../assets/check.png"
 
-const QuestionsOr = () => {
+const QuestionsOr = ({ navigation }) => {
     const [select, setSelect] = useState(null);
+
+    const SelectYes = () => {
+        setSelect(true);
+        setTimeout(() => {
+            navigation.navigate('QuestionsSelect')
+        }, 300)
+    }
+
+    const SelectNo = () => {
+        setSelect(false);
+        setTimeout(() => {
+            navigation.navigate('QuestionsSelect')
+        }, 300)
+    }
 
     return (
         <SafeAreaView style={styles.continer}>
             <View style={styles.content}>
                 <Text style={styles.textHead}>Lorem ipsum dolor sit amet, consectetur?</Text>
                 <TouchableOpacity
-                    onPress={() => setSelect(true)}
+                    onPress={SelectYes}
                     style={select ? styles.activeButton : styles.button}>
                     <Text style={[styles.buttonText, { color: select ? '#fff' : '#1D1D1D' }]}>Yes</Text>
                     {select ? <Image source={CheckIcon} /> : null}
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => setSelect(false)}
+                    onPress={SelectNo}
                     style={select ? styles.button : styles.activeButton}>
                     <Text style={[styles.buttonText, { color: select ? '#1D1D1D' : '#fff' }]}>No</Text>
                     {select ? null : <Image source={CheckIcon} />}
